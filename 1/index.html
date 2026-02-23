@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hackathon in4it-UAB — Digital Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#home" aria-label="Hackathon in4it-UAB">
+          <img class="brand-logo" src="./assets/logo-mark.svg" alt="" />
+          <div class="brand-text">
+            <div class="brand-title">HACKATHON in4iT</div>
+            <div class="brand-subtitle">Ed. a II-a: 20 - 23 iunie 2024</div>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Navigație principală">
+          <a class="nav-link is-active" href="#home">HOME</a>
+          <a class="nav-link" href="#inscriere">ÎNSCRIERE</a>
+          <a class="nav-link" href="#regulament">REGULAMENT</a>
+        </nav>
+
+        <button
+          class="menu-btn"
+          type="button"
+          aria-label="Deschide meniul"
+          aria-controls="siteNav"
+          aria-expanded="false"
+        >
+          <span class="menu-btn__bars" aria-hidden="true"></span>
+        </button>
+
+        <a
+          class="social social--desktop"
+          href="#"
+          aria-label="Facebook (demo)"
+          title="Facebook (demo)"
+        >
+          <span class="social-icon" aria-hidden="true">f</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero" aria-label="Hero">
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <h1 class="hero-title">Digital Future</h1>
+            <p class="hero-lead">
+              Ediția a II-a a hackathon-ului in4it-UAB, organizat de Universitatea
+              „1 Decembrie 1918” din Alba Iulia, 20-23 iunie 2024.
+            </p>
+            <p class="hero-text">
+              Concursul constă în dezvoltarea și prezentarea unor proiecte ce
+              includ o aplicație software, focalizate pe tema digitalizare.
+            </p>
+
+            <a class="cta" href="#inscriere">ÎNSCRIERE</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="regulament" class="section-orange">
+        <div class="container section-inner">
+          <h2 class="section-title">REGULAMENT PARTICIPARE</h2>
+          <div class="section-copy">
+            <p>
+              Hackathon in4it-UAB se adresează studenților de la orice universitate
+              din țară.
+            </p>
+            <p>
+              Înscrierea poate fi făcută atât individual cât și în echipe de maxim
+              5 persoane, indicând o temă de interes preferată.
+            </p>
+            <p>
+              Fiecare candidat, în momentul înregistrării, garantează că informațiile
+              furnizate împreună sunt adevărate.
+            </p>
+          </div>
+
+          <div class="divider" aria-hidden="true"></div>
+
+          <h3 class="calendar-title">CALENDAR</h3>
+          <dl class="calendar">
+            <div class="calendar-row">
+              <dt>Perioada de înscriere:</dt>
+              <dd>1 feb – 15 martie 2024</dd>
+            </div>
+            <div class="calendar-row">
+              <dt>Preselecția:</dt>
+              <dd>18-22 martie 2024</dd>
+            </div>
+            <div class="calendar-row">
+              <dt>Afișarea echipelor selectate:</dt>
+              <dd>25 martie 2023</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="inscriere" class="section-dark">
+        <div class="container section-inner">
+          <h2 class="section-title section-title--light">ÎNSCRIERE</h2>
+          <p class="muted">
+            Secțiune demo (ancoră pentru butonul „ÎNSCRIERE”). Dacă vrei, pot adăuga
+            aici un formular complet (individual/echipă) și validare.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-note">Main Image by DALLE3</div>
+        <img
+          class="footer-logo"
+          src="./assets/uab-mark.svg"
+          alt="Universitatea „1 Decembrie 1918” din Alba Iulia (demo)"
+        />
+      </div>
+    </footer>
+
+    <script>
+      (() => {
+        const header = document.querySelector(".site-header");
+        const btn = document.querySelector(".menu-btn");
+        const nav = document.querySelector(".nav");
+        if (!header || !btn || !nav) return;
+
+        nav.id = "siteNav";
+
+        const closeMenu = () => {
+          header.classList.remove("is-open");
+          btn.setAttribute("aria-expanded", "false");
+        };
+
+        const toggleMenu = () => {
+          const isOpen = header.classList.toggle("is-open");
+          btn.setAttribute("aria-expanded", String(isOpen));
+        };
+
+        btn.addEventListener("click", toggleMenu);
+
+        nav.addEventListener("click", (e) => {
+          const target = e.target;
+          if (target && target.matches && target.matches("a.nav-link")) closeMenu();
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeMenu();
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 820) closeMenu();
+        });
+      })();
+    </script>
+  </body>
+</html>
+
+
