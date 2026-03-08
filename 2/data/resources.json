@@ -1,0 +1,39 @@
+{
+  "resources": [
+    {
+      "name": "Biblioteca Centrală",
+      "type": "biblioteca",
+      "location": "Clădirea A, etaj 1",
+      "program": "L-V: 08:00-22:00, S: 09:00-18:00",
+      "tags": ["studiere", "lectură", "silențiu", "resurse"]
+    },
+    {
+      "name": "Cantina Studențească",
+      "type": "cantina",
+      "location": "Clădirea B, parter",
+      "program": "L-V: 07:30-19:00",
+      "tags": ["mâncare", "socializare", "prânz"]
+    },
+    {
+      "name": "Sala de Studiu 24/7",
+      "type": "spațiu-studiere",
+      "location": "Clădirea A, subsol",
+      "program": "Non-stop",
+      "tags": ["studiere", "non-stop", "examen"]
+    },
+    {
+      "name": "Sală Evenimente",
+      "type": "evenimente",
+      "location": "Clădirea C, etaj 2",
+      "program": "La cerere",
+      "tags": ["evenimente", "conferințe", "workshop"]
+    },
+    {
+      "name": "Cafenea Campus",
+      "type": "cantina",
+      "location": "Clădirea B, etaj 1",
+      "program": "L-V: 08:00-20:00",
+      "tags": ["cafea", "studiere", "socializare"]
+    }
+  ]
+}

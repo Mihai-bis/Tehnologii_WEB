@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1a1a2e">
+  <title>Campus Info Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Campus Info Hub</h1>
+    <button class="nav-toggle" type="button" aria-label="Meniu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav-menu">
+      <a href="index.html">Acasă</a>
+      <a href="pages/library.html">Biblioteca</a>
+      <a href="pages/cafeteria.html">Cantina</a>
+      <a href="pages/events.html">Evenimente</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Bine ați venit</h2>
+      <p>Portalul central pentru resursele campusului. Aici găsiți informații despre bibliotecă, cantină și evenimente.</p>
+    </section>
+
+    <p class="fragment-link"><a href="pages/library.html#schedule">Jump to schedule</a> — vedeți programul Bibliotecii</p>
+
+    <section id="resources-list">
+      <div class="section-header"><h2>Lista resurse</h2></div>
+      <div id="resource-container"></div>
+    </section>
+
+    <section id="filter-section">
+      <div class="section-header"><h2>Filtrare</h2></div>
+      <p>Filtrează doar locurile destinate studiului:</p>
+      <div class="button-group">
+        <button id="filter-study" type="button">Spații de studiu</button>
+        <button id="filter-all" type="button">Toate</button>
+      </div>
+      <div id="filter-results"></div>
+    </section>
+
+    <section id="tags-section">
+      <div class="section-header"><h2>Tags / Categorii</h2></div>
+      <div id="tags-container"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Campus Info Hub · Resurse: <a href="https://github.com/Mihai-bis/Tehnologii_WEB" target="_blank" rel="noopener">Mihai Bistrae</a></p>
+  </footer>
+
+  <script src="nav.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
