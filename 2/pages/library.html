@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a12">
+  <title>Biblioteca - Campus Info Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Campus Info Hub</a></h1>
+    <button class="nav-toggle" type="button" aria-label="Meniu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav-menu">
+      <a href="../index.html">Acasă</a>
+      <a href="library.html">Biblioteca</a>
+      <a href="cafeteria.html">Cantina</a>
+      <a href="events.html">Evenimente</a>
+      <a href="library.html#schedule">Sari la program</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h2>Biblioteca Centrală</h2>
+      <p class="subtitle">Spațiu dedicat studiului și lecturii. Colecții de cărți, reviste și acces la resurse online.</p>
+      <p class="hero-link"><a href="#schedule">Vedeți programul →</a></p>
+    </section>
+
+    <section>
+      <div class="section-header"><h2>Informații generale</h2></div>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-icon">📚</div>
+          <div class="info-card-content">
+            <h3>Biblioteca Centrală</h3>
+            <p>Peste 50.000 de volume, săli de lectură liniștite și cabinete pentru studiu individual. WiFi gratuit în întreaga clădire. Calculatorii și laptopurile sunt binevenite.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🪑</div>
+          <div class="info-card-content">
+            <h3>Sala de Lectură</h3>
+            <p>Disponibilă pentru studiu individual sau în grupuri mici. Rezervări pentru proiecte de grup la recepție.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="section-header"><h2>Program</h2></div>
+      <ul class="schedule-list">
+        <li><strong>Luni – Vineri</strong> <span class="text-muted">8:00 – 22:00</span></li>
+        <li><strong>Sâmbătă – Duminică</strong> <span class="text-muted">închis</span></li>
+      </ul>
+      <p class="text-muted" style="margin-top: 1rem;">Sala de Lectură: L-V 9:00–20:00, Sâmbătă 10:00–14:00.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Campus Info Hub · <a href="../data/resources.json">Sursă date</a> · <a href="https://www.w3schools.com/js/" target="_blank" rel="noopener">JavaScript Tutorial</a></p>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

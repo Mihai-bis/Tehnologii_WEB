@@ -1,0 +1,53 @@
+{
+  "resources": [
+    {
+      "name": "Biblioteca Centrală",
+      "type": "study",
+      "location": "Clădirea A, Etaj 1",
+      "program": "L-V: 8:00-22:00",
+      "tags": ["studiu", "citit", "tăcere"]
+    },
+    {
+      "name": "Cantina Studențească",
+      "type": "dining",
+      "location": "Clădirea B",
+      "program": "L-V: 11:00-15:00",
+      "tags": ["mâncare", "prânz"]
+    },
+    {
+      "name": "Sala de Evenimente",
+      "type": "events",
+      "location": "Clădirea C",
+      "program": "Program variabil",
+      "tags": ["conferințe", "workshop-uri"]
+    },
+    {
+      "name": "Sala de Lectură",
+      "type": "study",
+      "location": "Clădirea A, Etaj 2",
+      "program": "L-V: 9:00-20:00, S: 10:00-14:00",
+      "tags": ["studiu", "tăcere", "grupuri mici"]
+    },
+    {
+      "name": "Cafeneaua Campus",
+      "type": "dining",
+      "location": "Lângă Biblioteca",
+      "program": "L-V: 7:30-18:00",
+      "tags": ["cafea", "gustări", "socializare"]
+    },
+    {
+      "name": "Laborator Informatică",
+      "type": "study",
+      "location": "Clădirea D, Etaj 1",
+      "program": "L-V: 8:00-20:00",
+      "tags": ["studiu", "calculatoare", "proiecte"]
+    },
+    {
+      "name": "Sala de Conferințe",
+      "type": "events",
+      "location": "Clădirea C",
+      "program": "La programare",
+      "tags": ["conferințe", "prezentări"]
+    }
+  ]
+}
