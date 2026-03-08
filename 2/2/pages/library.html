@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1a1a2e">
+  <title>Biblioteca - Campus Info Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header>
+    <h1>Campus Info Hub</h1>
+    <button class="nav-toggle" type="button" aria-label="Meniu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav-menu">
+      <a href="../index.html">Acasă</a>
+      <a href="library.html">Biblioteca</a>
+      <a href="cafeteria.html">Cantina</a>
+      <a href="events.html">Evenimente</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h2>Biblioteca Centrală</h2>
+      <p class="subtitle">Acces la cărți, reviste și spații de studiu.</p>
+      <p class="hero-link"><a href="library.html#schedule">Treci la program ↓</a></p>
+    </section>
+
+    <section>
+      <div class="section-header"><h2>Servicii</h2></div>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-icon">📚</div>
+          <div class="info-card-content">
+            <h3>Împrumut cărți</h3>
+            <p>Colecție vastă de cărți și reviste.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🪑</div>
+          <div class="info-card-content">
+            <h3>Săli de lectură</h3>
+            <p>Spații liniștite pentru studiu individual.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">📶</div>
+          <div class="info-card-content">
+            <h3>Acces WiFi</h3>
+            <p>Conectivitate gratuită în toată biblioteca.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="section-header"><h2>Program</h2></div>
+      <ul class="schedule-list">
+        <li><strong>Luni – Vineri</strong><span>08:00 – 22:00</span></li>
+        <li><strong>Sâmbătă</strong><span>09:00 – 18:00</span></li>
+        <li><strong>Duminică</strong><span>Închis</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Campus Info Hub · <a href="../index.html">Înapoi la Acasă</a></p>
+  </footer>
+  <script src="../nav.js"></script>
+</body>
+</html>
