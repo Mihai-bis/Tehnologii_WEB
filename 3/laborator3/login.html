@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autentificare</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="js/cookies.js"></script>
+    <script src="js/storage.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const theme = CookieManager.get('theme') || 'light';
+            document.body.classList.add(theme);
+
+            // Utilizatori de test la prima încărcare
+            let users = StorageManager.getLocal('users');
+            if (!users || !Array.isArray(users) || users.length === 0) {
+                const defaultUsers = [
+                    { id: 1, username: 'admin', password: 'password', email: 'admin@example.com' },
+                    { id: 2, username: 'student', password: 'student123', email: 'student@example.com' }
+                ];
+                StorageManager.setLocal('users', defaultUsers);
+            }
+
+            // Pre-populare username dacă "Ține-mă minte" a fost bifat
+            const rememberedUser = StorageManager.getLocal('rememberedUsername');
+            if (rememberedUser) {
+                document.getElementById('username').value = rememberedUser;
+                document.getElementById('remember').checked = true;
+            }
+        });
+    </script>
+
+    <h1>Autentificare</h1>
+    <div id="error-message" class="alert-error" style="display: none;"></div>
+
+    <form id="login-form">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Parolă</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label>
+                <input type="checkbox" id="remember" name="remember">
+                Ține-mă minte
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Autentificare</button>
+    </form>
+
+    <p>Nu aveți cont? <a href="register.html">Înregistrați-vă</a></p>
+    <nav>
+        <a href="index.html">Pagina Principală</a>
+    </nav>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            const errorDiv = document.getElementById('error-message');
+
+            const users = StorageManager.getLocal('users') || [];
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                if (remember) {
+                    StorageManager.setLocal('rememberedUsername', username);
+                } else {
+                    StorageManager.removeLocal('rememberedUsername');
+                }
+
+                const session = {
+                    userId: user.id,
+                    username: user.username,
+                    email: user.email,
+                    loginTime: new Date().toISOString(),
+                    sessionId: 'sess_' + Math.random().toString(36).substr(2, 9)
+                };
+                StorageManager.setSession('session', session);
+
+                window.location.href = 'dashboard.html';
+            } else {
+                errorDiv.style.display = 'block';
+                errorDiv.textContent = 'Username sau parolă incorectă.';
+            }
+        });
+    </script>
+</body>
+</html>

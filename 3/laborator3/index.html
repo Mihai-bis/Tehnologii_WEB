@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laborator 3 - Pagina Principală</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="js/cookies.js"></script>
+    <script src="js/storage.js"></script>
+    <script>
+        // Aplicare temă și incrementare vizite la încărcare
+        document.addEventListener('DOMContentLoaded', function() {
+            const theme = CookieManager.get('theme') || 'light';
+            document.body.classList.add(theme);
+
+            let visits = parseInt(CookieManager.get('visits') || '0', 10);
+            visits++;
+            CookieManager.set('visits', visits.toString(), 365);
+
+            renderTables();
+        });
+    </script>
+
+    <h1>Bun venit, <span id="username">Vizitator</span>!</h1>
+    <p>Număr vizite: <strong id="visits">0</strong></p>
+
+    <nav>
+        <a href="preferences.html">Setări Preferințe</a>
+        <a href="cookies-info.html">Vizualizare Cookies</a>
+        <a href="login.html">Autentificare</a>
+    </nav>
+
+    <section>
+        <h2>Cookie-uri Active</h2>
+        <table id="cookies-table">
+            <thead>
+                <tr>
+                    <th>Nume</th>
+                    <th>Valoare</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>localStorage</h2>
+        <table id="local-table">
+            <thead>
+                <tr>
+                    <th>Cheie</th>
+                    <th>Valoare</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>sessionStorage</h2>
+        <table id="session-table">
+            <thead>
+                <tr>
+                    <th>Cheie</th>
+                    <th>Valoare</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <button class="btn btn-danger" id="clear-all">Șterge Tot</button>
+
+    <script>
+        function renderTables() {
+            document.getElementById('username').textContent = CookieManager.get('username') || 'Vizitator';
+            document.getElementById('visits').textContent = CookieManager.get('visits') || '0';
+
+            // Tabel cookie-uri
+            const cookies = CookieManager.getAll();
+            const cookiesBody = document.querySelector('#cookies-table tbody');
+            cookiesBody.innerHTML = '';
+            for (const [name, value] of Object.entries(cookies)) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${name}</td><td>${value}</td>`;
+                cookiesBody.appendChild(tr);
+            }
+            if (Object.keys(cookies).length === 0) {
+                cookiesBody.innerHTML = '<tr><td colspan="2">Niciun cookie</td></tr>';
+            }
+
+            // Tabel localStorage
+            const localData = StorageManager.getAllLocal();
+            const localBody = document.querySelector('#local-table tbody');
+            localBody.innerHTML = '';
+            for (const [key, value] of Object.entries(localData)) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${key}</td><td>${JSON.stringify(value)}</td>`;
+                localBody.appendChild(tr);
+            }
+            if (Object.keys(localData).length === 0) {
+                localBody.innerHTML = '<tr><td colspan="2">LocalStorage gol</td></tr>';
+            }
+
+            // Tabel sessionStorage
+            const sessionData = StorageManager.getAllSession();
+            const sessionBody = document.querySelector('#session-table tbody');
+            sessionBody.innerHTML = '';
+            for (const [key, value] of Object.entries(sessionData)) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${key}</td><td>${JSON.stringify(value)}</td>`;
+                sessionBody.appendChild(tr);
+            }
+            if (Object.keys(sessionData).length === 0) {
+                sessionBody.innerHTML = '<tr><td colspan="2">SessionStorage gol</td></tr>';
+            }
+        }
+
+        document.getElementById('clear-all').addEventListener('click', function() {
+            CookieManager.deleteAll();
+            StorageManager.clearLocal();
+            StorageManager.clearSession();
+            location.reload();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="js/cookies.js"></script>
+    <script src="js/storage.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const session = StorageManager.getSession('session');
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const theme = CookieManager.get('theme') || 'light';
+            document.body.classList.add(theme);
+        });
+    </script>
+
+    <h1>Dashboard</h1>
+
+    <section>
+        <h2>Informații despre sesiune</h2>
+        <p><strong>ID Sesiune:</strong> <span id="session-id"></span></p>
+        <p><strong>Username:</strong> <span id="username"></span></p>
+        <p><strong>Email:</strong> <span id="email"></span></p>
+        <p><strong>Ora autentificării:</strong> <span id="login-time"></span></p>
+        <p><strong>Durata sesiunii:</strong> <span id="session-duration">0 secunde</span></p>
+    </section>
+
+    <section>
+        <h2>Date brute sessionStorage (debug)</h2>
+        <pre id="session-raw"></pre>
+    </section>
+
+    <nav>
+        <a href="cart.html">Coș de Cumpărături</a>
+        <a href="index.html">Pagina Principală</a>
+        <a href="dashboard.html" target="_blank">Deschide în tab nou (experiment sessionStorage)</a>
+    </nav>
+    <p><button class="btn btn-danger" id="logout">Deconectare</button></p>
+
+    <script>
+        function updateDashboard() {
+            const session = StorageManager.getSession('session');
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            document.getElementById('session-id').textContent = session.sessionId || '-';
+            document.getElementById('username').textContent = session.username || '-';
+            document.getElementById('email').textContent = session.email || '-';
+            document.getElementById('login-time').textContent = session.loginTime || '-';
+
+            const loginTime = new Date(session.loginTime).getTime();
+            const now = Date.now();
+            const seconds = Math.floor((now - loginTime) / 1000);
+            document.getElementById('session-duration').textContent = seconds + ' secunde';
+
+            document.getElementById('session-raw').textContent = JSON.stringify(StorageManager.getAllSession(), null, 2);
+        }
+
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+
+        document.getElementById('logout').addEventListener('click', function() {
+            StorageManager.clearSession();
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

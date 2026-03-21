@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coș de Cumpărături</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="js/cookies.js"></script>
+    <script src="js/storage.js"></script>
+    <script>
+        const products = {
+            laptop: { name: 'Laptop', price: 2500 },
+            telefon: { name: 'Telefon', price: 1200 },
+            tableta: { name: 'Tabletă', price: 800 },
+            casti: { name: 'Căști', price: 150 }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const session = StorageManager.getSession('session');
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const theme = CookieManager.get('theme') || 'light';
+            document.body.classList.add(theme);
+        });
+    </script>
+
+    <h1>Coș de Cumpărături</h1>
+
+    <section>
+        <h2>Adaugă produs</h2>
+        <form id="add-form">
+            <div class="form-group">
+                <label for="product">Produs</label>
+                <select id="product" name="product">
+                    <option value="laptop">Laptop - 2500 RON</option>
+                    <option value="telefon">Telefon - 1200 RON</option>
+                    <option value="tableta">Tabletă - 800 RON</option>
+                    <option value="casti">Căști - 150 RON</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Cantitate (1-10)</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+            </div>
+            <button type="submit" class="btn btn-primary">Adaugă în Coș</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Coșul tău</h2>
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Produs</th>
+                    <th>Cantitate</th>
+                    <th>Preț</th>
+                    <th>Acțiuni</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <p><strong>TOTAL: <span id="total">0</span> RON</strong></p>
+        <button class="btn btn-danger" id="clear-cart">Golește Coșul</button>
+    </section>
+
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="index.html">Pagina Principală</a>
+    </nav>
+
+    <script>
+        function getCart() {
+            const cart = StorageManager.getSession('cart');
+            return cart && typeof cart === 'object' ? cart : {};
+        }
+
+        function saveCart(cart) {
+            StorageManager.setSession('cart', cart);
+        }
+
+        function renderCart() {
+            const cart = getCart();
+            const tbody = document.querySelector('#cart-table tbody');
+            tbody.innerHTML = '';
+            let total = 0;
+
+            for (const [productId, qty] of Object.entries(cart)) {
+                if (qty <= 0) continue;
+                const prod = products[productId];
+                if (!prod) continue;
+                const subtotal = prod.price * qty;
+                total += subtotal;
+
+                const tr = document.createElement('tr');
+                const btn = document.createElement('button');
+                btn.className = 'btn btn-danger btn-sm';
+                btn.textContent = 'Șterge';
+                btn.onclick = function() {
+                    const c = getCart();
+                    delete c[productId];
+                    saveCart(c);
+                    renderCart();
+                };
+                tr.innerHTML = `
+                    <td>${prod.name}</td>
+                    <td>${qty}</td>
+                    <td>${subtotal} RON</td>
+                    <td></td>
+                `;
+                tr.lastElementChild.appendChild(btn);
+                tbody.appendChild(tr);
+            }
+
+            if (Object.keys(cart).filter(k => cart[k] > 0).length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4">Coșul este gol</td></tr>';
+            }
+
+            document.getElementById('total').textContent = total;
+        }
+
+        document.getElementById('add-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const productId = document.getElementById('product').value;
+            const quantity = parseInt(document.getElementById('quantity').value, 10);
+            if (quantity < 1 || quantity > 10) return;
+
+            const cart = getCart();
+            cart[productId] = (cart[productId] || 0) + quantity;
+            saveCart(cart);
+            renderCart();
+        });
+
+        document.getElementById('clear-cart').addEventListener('click', function() {
+            saveCart({});
+            renderCart();
+        });
+
+        renderCart();
+    </script>
+</body>
+</html>
