@@ -27,17 +27,6 @@
 
 **În rezumat:** HTTPS = HTTP + criptare + autentificare.
 
----
-
-## Partea 1.2 și 1.3 - Exerciții Practice
-
-Pentru exercițiile practice (Analiza HTTP cu Developer Tools și Testarea cu Fetch API), trebuie:
-- Deschideți https://httpbin.org în browser
-- Folosiți Developer Tools (F12) → Tab "Network" pentru analiză
-- Faceți screenshot-uri cu cererile analizate și rezultatele din consolă
-
----
-
 
 ## Structura Proiectului
 
