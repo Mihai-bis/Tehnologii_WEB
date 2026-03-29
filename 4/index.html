@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator MVC</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <h1 class="app__title">Calculator</h1>
+    <div class="calculator" id="calculator">
+      <div class="calculator__display">
+        <div class="calculator__expression" id="expression" aria-live="polite">&nbsp;</div>
+        <div class="calculator__result" id="result" aria-live="assertive">0</div>
+      </div>
+      <div class="calculator__keys" role="group" aria-label="Tastatură calculator">
+        <button type="button" class="key key--clear key--g-clr" data-action="clear" aria-label="Șterge tot">AC</button>
+        <button type="button" class="key key--operator key--g-div" data-action="operator" data-value="/" aria-label="Împărțire">÷</button>
+        <button type="button" class="key key--operator key--g-mul" data-action="operator" data-value="*" aria-label="Înmulțire">×</button>
+
+        <button type="button" class="key key--g-7" data-action="digit" data-value="7">7</button>
+        <button type="button" class="key key--g-8" data-action="digit" data-value="8">8</button>
+        <button type="button" class="key key--g-9" data-action="digit" data-value="9">9</button>
+        <button type="button" class="key key--operator key--g-sub" data-action="operator" data-value="-" aria-label="Scădere">−</button>
+
+        <button type="button" class="key key--g-4" data-action="digit" data-value="4">4</button>
+        <button type="button" class="key key--g-5" data-action="digit" data-value="5">5</button>
+        <button type="button" class="key key--g-6" data-action="digit" data-value="6">6</button>
+        <button type="button" class="key key--operator key--g-add" data-action="operator" data-value="+" aria-label="Adunare">+</button>
+
+        <button type="button" class="key key--g-1" data-action="digit" data-value="1">1</button>
+        <button type="button" class="key key--g-2" data-action="digit" data-value="2">2</button>
+        <button type="button" class="key key--g-3" data-action="digit" data-value="3">3</button>
+        <button type="button" class="key key--equals key--g-eq" data-action="equals" aria-label="Egal">=</button>
+
+        <button type="button" class="key key--g-0" data-action="digit" data-value="0">0</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="model.js"></script>
+  <script src="view.js"></script>
+  <script src="controller.js"></script>
+</body>
+</html>

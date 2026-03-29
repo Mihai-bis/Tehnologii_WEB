@@ -1,0 +1,232 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0f1419;
+  --surface: #1a2332;
+  --key: #243044;
+  --key-hover: #2d3d56;
+  --key-active: #1e2a3d;
+  --operator: #3d5a80;
+  --operator-hover: #4a6b99;
+  --equals: #e07a5f;
+  --equals-hover: #e8917a;
+  --text: #e8eef5;
+  --text-muted: #8b9cb3;
+  --accent: #81b29a;
+  --radius: 12px;
+  --font: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  background: radial-gradient(ellipse 120% 80% at 50% -20%, #1e3a5f 0%, var(--bg) 55%);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.app {
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.app__title {
+  margin: 0 0 1.5rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.calculator {
+  width: 100%;
+  max-width: 28rem;
+  background: var(--surface);
+  border-radius: calc(var(--radius) + 4px);
+  padding: 1.5rem 1.35rem 1.35rem;
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+.calculator__display {
+  background: var(--bg);
+  border-radius: calc(var(--radius) - 2px);
+  padding: 1.15rem 1.2rem 1.05rem;
+  margin-bottom: 1.15rem;
+  min-height: 6.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+
+.calculator__expression {
+  font-size: 1rem;
+  color: var(--text-muted);
+  text-align: right;
+  min-height: 1.4em;
+  word-break: break-all;
+  line-height: 1.35;
+}
+
+.calculator__result {
+  font-size: clamp(1.75rem, 5vw, 2.35rem);
+  font-weight: 600;
+  text-align: right;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  word-break: break-all;
+}
+
+.calculator__result--error {
+  color: #f4a261;
+  font-size: 1.1rem;
+}
+
+.calculator__keys {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(3.55rem, auto));
+  grid-template-areas:
+    "clr clr div mul"
+    "d7 d8 d9 sub"
+    "d4 d5 d6 add"
+    "d1 d2 d3 eq"
+    "d0 d0 . eq";
+  gap: 0.7rem;
+}
+
+.key--g-clr {
+  grid-area: clr;
+}
+
+.key--g-div {
+  grid-area: div;
+}
+
+.key--g-mul {
+  grid-area: mul;
+}
+
+.key--g-7 {
+  grid-area: d7;
+}
+
+.key--g-8 {
+  grid-area: d8;
+}
+
+.key--g-9 {
+  grid-area: d9;
+}
+
+.key--g-sub {
+  grid-area: sub;
+}
+
+.key--g-4 {
+  grid-area: d4;
+}
+
+.key--g-5 {
+  grid-area: d5;
+}
+
+.key--g-6 {
+  grid-area: d6;
+}
+
+.key--g-add {
+  grid-area: add;
+}
+
+.key--g-1 {
+  grid-area: d1;
+}
+
+.key--g-2 {
+  grid-area: d2;
+}
+
+.key--g-3 {
+  grid-area: d3;
+}
+
+.key--g-eq {
+  grid-area: eq;
+}
+
+.key--g-0 {
+  grid-area: d0;
+}
+
+.key {
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--key);
+  border: none;
+  border-radius: calc(var(--radius) - 4px);
+  padding: 0.65rem 0.5rem;
+  min-height: 3.5rem;
+  cursor: pointer;
+  transition: background 0.12s ease, transform 0.08s ease;
+}
+
+.key:hover {
+  background: var(--key-hover);
+}
+
+.key:active {
+  background: var(--key-active);
+  transform: scale(0.97);
+}
+
+.key:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.key--operator {
+  background: var(--operator);
+}
+
+.key--operator:hover {
+  background: var(--operator-hover);
+}
+
+.key--equals {
+  background: var(--equals);
+  color: #1a0f0c;
+  font-weight: 700;
+  font-size: 1.35rem;
+}
+
+.key--equals:hover {
+  background: var(--equals-hover);
+}
+
+.key--clear {
+  background: #2a3548;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+}
+
+.key--clear:hover {
+  background: #354358;
+  color: var(--text);
+}

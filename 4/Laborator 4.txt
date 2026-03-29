@@ -1,0 +1,34 @@
+Sa se realizeze o aplicatie de tip calculator folosind doar HTML, CSS si JavaScript organizata conform principiilor MVC. Aplicatia trebuie sa permita efectuarea operatiilor de baza.
+
+Calculatorul sa include:
+- cifrele 0-9
+- operatiile +, -, *, /
+- buton = 
+- buton C sau AC
+- afisarea expresiei curente si a rezultatului
+- tratarea unei erori simple, de exemplu impartirea la zero.
+
+Impartirea pe MVC
+
+View 
+- structura HTML a calculatorului
+- CSS
+- afisajul rezultatului
+
+Model
+- valorile curente: operand 1, operand2, operator, displayValue
+- metode pentru actualizare
+- regula de calcul
+- validare minimala, de exemplu sa nu permita rezultat invalid
+
+Controller
+- asculta apasarile de butoane
+- decide ce metoda din model se apeleaza
+- care actualizarea view-ului
+
+Structura proiectului
+- index.html
+- style.css
+- model.js
+- view.js
+- controller.js
